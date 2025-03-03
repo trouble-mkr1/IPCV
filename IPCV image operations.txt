@@ -1,0 +1,28 @@
+import cv2
+import numpy as np
+
+# 1 : to read an image
+Assassin = cv2.imread("AC.WEBP")
+
+# 2 : To convert image to grayscale
+GC = cv2.cvtColor(Assassin, cv2.COLOR_BGR2GRAY)
+
+# 3 : Edge detection
+edge = cv2.Canny(Assassin, 50, 50)
+
+# 4 : To resize an image
+Newsize = cv2.resize(Assassin, (750, 500))
+
+# 5: Resizing the pixels
+Newsize2 = cv2.resize(Assassin, (0, 0), fx=0.05, fy=0.05)
+GC = cv2.resize(grayTest, (200, 400))
+
+# 6 : Image sharpening
+sharpen = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+sharpened = cv2.filter2D(Assassin, -1, sharpen) 
+
+# 7 : Image Blurring
+blurr = cv2.GaussianBlur(Assassin, (10, 10), 0)  
+
+# 8 : Inverting the image
+negative = cv2.bitwise_not(Assassin)
